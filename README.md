@@ -1,5 +1,7 @@
 # Audio Tracking Car
 
+[![License](https://img.shields.io/github/license/jke48222/Audio-Tracking-Car)](LICENSE) ![Top language](https://img.shields.io/github/languages/top/jke48222/Audio-Tracking-Car) ![hardware](https://img.shields.io/badge/hardware-Raspberry%20Pi%204-red) ![control](https://img.shields.io/badge/control-PID%20with%20encoder%20feedback-blue)
+
 A Raspberry Pi–powered car that **localizes sound** with a dual‑channel analog front end and **tracks toward the desired source**. The system reads level‑decoded ADC signals from two band‑pass filtered microphone chains, computes left/right dominance, and drives two DC motors via an H‑bridge. Modes are selected with a 4‑bit **DIP switch** (audio tracking vs. figure‑drawing demos).
 
 ---
@@ -15,6 +17,10 @@ A Raspberry Pi–powered car that **localizes sound** with a dual‑channel anal
 ---
 
 ## Hardware
+
+![System schematic, KiCad](Wiring_Diagrams/UI.png)
+
+Schematics in [`Wiring_Diagrams/`](Wiring_Diagrams): [H-Bridge](Wiring_Diagrams/H-Bridge.png), [PHP](Wiring_Diagrams/PHP.png), [UI](Wiring_Diagrams/UI.png).
 
 - **Controller:** Raspberry Pi (GPIO via `gpiozero`)
 - **Microphones:** 2× electret mic + analog chain (preamp → band‑pass → envelope/peak → level decode to GPIO)
@@ -114,3 +120,7 @@ python3 audio_tracking.py       # Runs single-source demo by default
 - Use the **figure‑drawing** patterns to validate drivetrain before enabling audio tracking.  
 - If wheel RPM is noisy, add debouncing or averaging in `rpm_motor_controller.py`.  
 - Consider current limiting and flyback protection on the H‑bridge supply.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
